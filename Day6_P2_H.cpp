@@ -63,50 +63,6 @@ public:
 
 };
 
-class Game {
-public:
-	LinkedQueue* q1;
-	LinkedQueue* q2;
-	int score1;
-	int score2;
-
-	Game() {
-		this->q1 = new LinkedQueue();
-		this->q2 = new LinkedQueue();
-		this->score1 = 0;
-		this->score2 = 0;
-	}
-
-	void ing() {
-		int a = q1->front();
-		int b = q2->front();
-		q1->dequeue();
-		q2->dequeue();
-		if (a > b) {
-			this->score1++;
-			if (q1->sz != 0) {
-				int x = q1->front();
-				q1->changeHead(x + a - b - 1);
-			}
-		}
-		else if (a < b) {
-			this->score2++;
-			if (q2->sz != 0) {
-				int x = q2->front();
-				q2->changeHead(x + b - a - 1);
-			}
-		}
-	}
-
-	int end() {
-		if (this->score1 > this->score2)
-			return 1;
-		else if (this->score2 > this->score1)
-			return 2;
-		else
-			return 0;
-	}
-};
 
 int main() {
 	int T, N, x;
